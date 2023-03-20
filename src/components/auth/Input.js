@@ -6,6 +6,7 @@ import radius from "../styles/radius";
 import { ReactComponent as IShow } from "../../assets/icons/eye_opened.svg";
 import { ReactComponent as IHide } from "../../assets/icons/eye_closed.svg";
 import { Text } from "../styles/Typography";
+import { NAMES } from "./SignUp";
 
 const Input = ({
   name,
@@ -23,7 +24,7 @@ const Input = ({
     setShow((prev) => !prev);
   };
 
-  // TODO svg fill not working 문제 해결
+  // TODO svg fill not working 이슈 해결
   const getToggle = useMemo(() => {
     if (name !== "password") return null;
     return (
@@ -43,12 +44,17 @@ const Input = ({
     else return <Text color={colors.orange_red_main}>{errorMsg}</Text>;
   };
 
+  const getType = useMemo(() => {
+    if (name !== NAMES.PW) return type;
+    else return show ? "text" : "password";
+  }, [name, type, show]);
+
   return (
     <Root>
       <InputWrapper>
         <RightSection>
           <InputText
-            type={type}
+            type={getType}
             name={name}
             placeholder={placeholder}
             value={value}

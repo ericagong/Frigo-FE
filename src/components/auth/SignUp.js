@@ -105,6 +105,7 @@ const SignUp = () => {
           {LABELS[name]}
         </Text>
         <Input
+          type={name !== NAMES.CHECK ? "text" : "password"}
           name={name}
           value={info[name]}
           error={errors[name]}
