@@ -1,5 +1,11 @@
+import Root from "../../components/auth/Layout";
+
 const Auth = () => {
-  return <>Auth</>;
+  return (
+    <Root>
+      <div>Auth</div>
+    </Root>
+  );
 };
 
 export default Auth;
