@@ -1,10 +1,13 @@
 import Root from "../../components/auth/Layout";
-import SignUp from "../../components/auth/SignUp";
+import { AuthProvider } from "../../components/auth/context";
+import A from "../../components/auth";
 
 const Auth = () => {
   return (
     <Root>
-      <SignUp />
+      <AuthProvider>
+        <A />
+      </AuthProvider>
     </Root>
   );
 };
