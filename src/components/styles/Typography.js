@@ -217,4 +217,4 @@ const Text = styled.div`
 	`}
 `;
 
-export { BT_BASIC, BT_SPECIAL, ST_20, ST_18, ST_16, Text };
+export { fonts, fontWeights, BT_BASIC, BT_SPECIAL, ST_20, ST_18, ST_16, Text };
