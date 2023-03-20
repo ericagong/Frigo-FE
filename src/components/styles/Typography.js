@@ -199,11 +199,11 @@ const ST_16 = styled(TitleBase)`
 
 /**
  * 내부 텍스트
- * @description props: fontWeight=medium, lineHeight=1.448rem, color=colrs.gray4, style
+ * @description props: fontSize=1rem, fontWeight=medium, lineHeight=1.448rem, color=colrs.gray4, style
  */
 const Text = styled.div`
   font-family: ${fonts.nato_sans};
-  font-size: 1rem;
+  font-size: ${(props) => (!props.fontSize ? `1rem` : props.fontSize)};
 	font-weight: ${(props) =>
     !props.fontWeight ? fontWeights.medium : props.fontWeight}
   line-height: ${(props) =>

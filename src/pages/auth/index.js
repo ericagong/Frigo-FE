@@ -1,9 +1,10 @@
 import Root from "../../components/auth/Layout";
+import SignUp from "../../components/auth/SignUp";
 
 const Auth = () => {
   return (
     <Root>
-      <div>Auth</div>
+      <SignUp />
     </Root>
   );
 };
