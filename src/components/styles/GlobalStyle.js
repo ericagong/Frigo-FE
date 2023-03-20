@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 	font-family: ${fonts.nato_sans};
 	font-style: normal;
 	font-weight: ${fontWeights.medium};
-	font-size: 1rem;
+	font-size: 1.4rem;
 	line-height: 1.448rem;
 	color: ${colors.black_main};
 }

@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
-import { NAMES as SIGN_IN_NAMES } from "./SignUp";
+import { NAMES as SIGN_UP_NAMES } from "./SignUp";
 import { STEPS } from "./index";
 
-const SIGN_UP_NAMES = {
+const SIGN_IN_NAMES = {
   ID: "id",
   PW: "password",
 };
@@ -10,58 +10,57 @@ const SIGN_UP_NAMES = {
 const AuthContext = createContext({
   state: {
     step: [STEPS.SIGN_UP],
-    signInInfo: {
-      [SIGN_IN_NAMES.EMAIL]: "",
-      [SIGN_IN_NAMES.ID]: "",
-      [SIGN_IN_NAMES.PW]: "",
-      [SIGN_IN_NAMES.CHECK]: "",
-    },
-    signInErrors: {
-      [SIGN_IN_NAMES.EMAIL]: false,
-      [SIGN_IN_NAMES.ID]: false,
-      [SIGN_IN_NAMES.PW]: false,
-      [SIGN_IN_NAMES.CHECK]: false,
-    },
-
     signUpInfo: {
+      [SIGN_UP_NAMES.EMAIL]: "",
       [SIGN_UP_NAMES.ID]: "",
       [SIGN_UP_NAMES.PW]: "",
+      [SIGN_UP_NAMES.CHECK]: "",
     },
     signUpErrors: {
+      [SIGN_UP_NAMES.EMAIL]: false,
       [SIGN_UP_NAMES.ID]: false,
       [SIGN_UP_NAMES.PW]: false,
+      [SIGN_UP_NAMES.CHECK]: false,
+    },
+    signInInfo: {
+      [SIGN_IN_NAMES.ID]: "",
+      [SIGN_IN_NAMES.PW]: "",
+    },
+    signInErrors: {
+      [SIGN_IN_NAMES.ID]: false,
+      [SIGN_IN_NAMES.PW]: false,
     },
   },
   actions: {
     setStep: () => {},
-    setSignInInfo: () => {},
-    setSignInError: () => {},
     setSignUpInfo: () => {},
-    setSignUpError: () => {},
+    setSignUpErrors: () => {},
+    setSignInInfo: () => {},
+    setSignInErrors: () => {},
   },
 });
 
 const AuthProvider = ({ children }) => {
   const [step, setStep] = useState(STEPS.SIGN_UP);
-  const [signInInfo, setSignInInfo] = useState({
-    [SIGN_IN_NAMES.EMAIL]: "",
-    [SIGN_IN_NAMES.ID]: "",
-    [SIGN_IN_NAMES.PW]: "",
-    [SIGN_IN_NAMES.CHECK]: "",
-  });
-  const [signInErrors, setSignInError] = useState({
-    [SIGN_IN_NAMES.EMAIL]: false,
-    [SIGN_IN_NAMES.ID]: false,
-    [SIGN_IN_NAMES.PW]: false,
-    [SIGN_IN_NAMES.CHECK]: false,
-  });
   const [signUpInfo, setSignUpInfo] = useState({
+    [SIGN_UP_NAMES.EMAIL]: "",
     [SIGN_UP_NAMES.ID]: "",
     [SIGN_UP_NAMES.PW]: "",
+    [SIGN_UP_NAMES.CHECK]: "",
   });
-  const [signUpErrors, setSignUpError] = useState({
+  const [signUpErrors, setSignUpErrors] = useState({
+    [SIGN_UP_NAMES.EMAIL]: false,
     [SIGN_UP_NAMES.ID]: false,
     [SIGN_UP_NAMES.PW]: false,
+    [SIGN_UP_NAMES.CHECK]: false,
+  });
+  const [signInInfo, setSignInInfo] = useState({
+    [SIGN_IN_NAMES.ID]: "",
+    [SIGN_IN_NAMES.PW]: "",
+  });
+  const [signInErrors, setSignInErrors] = useState({
+    [SIGN_IN_NAMES.ID]: false,
+    [SIGN_IN_NAMES.PW]: false,
   });
 
   const value = {
@@ -69,9 +68,9 @@ const AuthProvider = ({ children }) => {
     actions: {
       setStep,
       setSignInInfo,
-      setSignInError,
+      setSignInErrors,
       setSignUpInfo,
-      setSignUpError,
+      setSignUpErrors,
     },
   };
 

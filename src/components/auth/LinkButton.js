@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import { Text } from "../styles/Typography";
 
 const LinkButton = ({ text, onClick, style }) => {
-  console.log(style);
   return (
     <Root onClick={onClick} style={style}>
       <Text
