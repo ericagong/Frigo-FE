@@ -5,10 +5,10 @@ import { STEPS } from "./index";
 import { Text, fontWeights } from "../styles/Typography";
 import apis from "../../utils/axios";
 import Header from "./Header";
-import LinkButton from "./LinkButton";
 import Input from "../Input";
 import colors from "../styles/colors";
 import Button from "../Button";
+import Footer from "./Footer";
 import styled from "styled-components";
 
 const NAMES = {
@@ -51,7 +51,6 @@ const VALID_MSGS = {
   [NAMES.CHECK]: "비밀번호 재확인 값이 비밀번호와 일치합니다.",
 };
 
-// TODO 이용약관, 개인정보 취급 방침 올바른 url 연결
 // TODO label fontWeight 적용 안되는 이슈 잡기
 // TODO 자동 완성 시 파란 배경 뜨지 않도록 css 처리
 const SignUp = () => {
@@ -141,11 +140,6 @@ const SignUp = () => {
     ));
   }, [info, errors, submitErrMsg, onChange]);
 
-  const toPolicy = useCallback((e) => {
-    const { name } = e.target;
-    window.open(`/${name}`, "_blank");
-  }, []);
-
   const getDisabled = () => {
     for (const value of Object.values(errors)) {
       if (value !== false) return true;
@@ -192,10 +186,7 @@ const SignUp = () => {
           disabled={getDisabled()}
         />
       </Form>
-      <Footer>
-        <LinkButton text="이용약관" onClick={toPolicy} />
-        <LinkButton text="개인정보 취급 방침" onClick={toPolicy} />
-      </Footer>
+      <Footer />
     </Root>
   );
 };
@@ -214,12 +205,6 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-`;
-
-const Footer = styled.div`
-  box-sizing: border-box;
-  width: 33.2rem;
-  padding: 1rem 8rem;
 `;
 
 export { NAMES, DUPLICATE };
