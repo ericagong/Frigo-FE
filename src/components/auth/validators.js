@@ -1,15 +1,4 @@
 /**
- * 검증 내용 없음
- * @description 항상 참을 반환
- * @param {string} value 유저 기입값
- * @returns {boolean}
- */
-function alwaysValid(value) {
-  if (!value) return true;
-  return true;
-}
-
-/**
  * Email 검증
  * @description `@`를 반드시 포함하고 `@` 전후에 2자 이상의 문자를 포함하는 적절한 이메일 형식인지 판별
  * @param {string} email 이메일
@@ -66,4 +55,4 @@ function isValidCheck(password, check) {
   return password === check;
 }
 
-export { alwaysValid, isValidEmail, isValidID, isValidPW, isValidCheck };
+export { isValidEmail, isValidID, isValidPW, isValidCheck };

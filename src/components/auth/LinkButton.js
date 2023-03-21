@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
 import { Text } from "../styles/Typography";
+import styled, { css } from "styled-components";
 
 const LinkButton = ({ text, onClick, style }) => {
   return (

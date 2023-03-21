@@ -1,8 +1,8 @@
+import { Text, fontWeights } from "./styles/Typography";
+import colors from "./styles/colors";
 import styled from "styled-components";
-import { Text, fontWeights } from "../styles/Typography";
-import radius from "../styles/radius";
-import borders from "../styles/borders";
-import colors from "../styles/colors";
+import radius from "./styles/radius";
+import borders from "./styles/borders";
 
 const Button = ({
   type = "button",

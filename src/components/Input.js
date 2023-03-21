@@ -1,12 +1,12 @@
 import { useState, useMemo } from "react";
+import { ReactComponent as IShow } from "../assets/icons/eye_opened.svg";
+import { ReactComponent as IHide } from "../assets/icons/eye_closed.svg";
+import { Text } from "./styles/Typography";
+import colors from "./styles/colors";
+import { NAMES } from "./auth/SignUp";
 import styled from "styled-components";
-import colors from "../styles/colors";
-import borders from "../styles/borders";
-import radius from "../styles/radius";
-import { ReactComponent as IShow } from "../../assets/icons/eye_opened.svg";
-import { ReactComponent as IHide } from "../../assets/icons/eye_closed.svg";
-import { Text } from "../styles/Typography";
-import { NAMES } from "./SignUp";
+import borders from "./styles/borders";
+import radius from "./styles/radius";
 
 const Input = ({
   name,
