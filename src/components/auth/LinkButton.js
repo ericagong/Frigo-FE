@@ -16,6 +16,7 @@ const LinkButton = ({ text, onClick, style }) => {
 };
 
 const Root = styled.button`
+  background: inherit;
   border: none;
   ${(props) =>
     props.style &&

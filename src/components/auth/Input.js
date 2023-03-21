@@ -24,16 +24,11 @@ const Input = ({
     setShow((prev) => !prev);
   };
 
-  // TODO svg fill not working 이슈 해결
   const getToggle = useMemo(() => {
     if (name !== "password") return null;
     return (
       <ToggleButton onClick={onToggle}>
-        {!show ? (
-          <IShow fill={colors.white_main} />
-        ) : (
-          <IHide fill={colors.white_main} />
-        )}
+        {!show ? <IShow /> : <IHide />}
       </ToggleButton>
     );
   }, [name, show]);

@@ -5,9 +5,10 @@ import { ReactComponent as ILogo } from "../../assets/illustrations/frigo_logo_t
 import LinkButton from "./LinkButton";
 import styled from "styled-components";
 import Input from "./Input";
-import { Text } from "../styles/Typography";
+import { Text, fontWeights } from "../styles/Typography";
 import colors from "../styles/colors";
 import { isValidCheck, isValidEmail, isValidID, isValidPW } from "./validators";
+import Button from "./Button";
 
 const NAMES = {
   EMAIL: "email",
@@ -79,8 +80,6 @@ const SignUp = () => {
           }));
           break;
         case NAMES.CHECK:
-          console.log("check");
-          console.log(info, info[NAMES.PW]);
           setErrors((prev) => ({
             ...prev,
             [name]: !VALIDATORS[NAMES.CHECK](info[NAMES.PW], value),
@@ -100,6 +99,7 @@ const SignUp = () => {
           as={"label"}
           fontSize={`1.4rem`}
           lineHeight={`2.027rem`}
+          fontWeight={fontWeights.bold}
           color={colors.gray8}
         >
           {LABELS[name]}
@@ -117,13 +117,43 @@ const SignUp = () => {
     ));
   }, [info, errors, onChange]);
 
+  const toPolicy = useCallback((e) => {
+    const { name } = e.target;
+    window.open(`/${name}`, "_blank");
+  }, []);
+
+  const getDisabled = () => {
+    for (const value of Object.values(errors)) {
+      if (value !== false) return true;
+    }
+    for (const value of Object.values(info)) {
+      if (value === "") return true;
+    }
+    return false;
+  };
+
+  const onComplete = useCallback(() => {
+    console.log("completed");
+  }, []);
+
   return (
     <Root>
       <Header>
         <Logo />
         <LinkButton text="로그인" onClick={toSignIn} />
       </Header>
-      <Form onSubmit={onSubmit}>{getInputs}</Form>
+      <Form onSubmit={onSubmit}>
+        {getInputs}
+        <Button
+          text="회원 가입"
+          onClick={onComplete}
+          disabled={getDisabled()}
+        />
+      </Form>
+      <Footer>
+        <LinkButton text="이용약관" onClick={toPolicy} />
+        <LinkButton text="개인정보 취급 방침" onClick={toPolicy} />
+      </Footer>
     </Root>
   );
 };
@@ -153,6 +183,12 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+`;
+
+const Footer = styled.div`
+  box-sizing: border-box;
+  width: 33.2rem;
+  padding: 1rem 8rem;
 `;
 
 export { NAMES };
