@@ -4,7 +4,7 @@ import AuthContext, { SIGN_IN_NAMES } from "./context";
 import { STEPS } from "./index";
 import { Text, fontWeights } from "../styles/Typography";
 import apis from "../../utils/axios";
-import { ReactComponent as ILogo } from "../../assets/illustrations/frigo_logo_text.svg";
+import Header from "./Header";
 import LinkButton from "./LinkButton";
 import Input from "../Input";
 import colors from "../styles/colors";
@@ -66,10 +66,6 @@ const SignUp = () => {
   } = useContext(AuthContext);
 
   const [submitErrMsg, setSubmitErrMsg] = useState("");
-
-  const toSignIn = useCallback(() => {
-    setStep(STEPS.SIGN_IN);
-  }, [setStep]);
 
   const onSubmit = useCallback((e) => {
     e.preventDefault();
@@ -160,8 +156,6 @@ const SignUp = () => {
     return false;
   };
 
-  console.log(errors, submitErrMsg);
-
   const onComplete = useCallback(() => {
     const signUp = async () => {
       try {
@@ -189,10 +183,7 @@ const SignUp = () => {
 
   return (
     <Root>
-      <Header>
-        <Logo />
-        <LinkButton text="로그인" onClick={toSignIn} />
-      </Header>
+      <Header />
       <Form onSubmit={onSubmit}>
         {getInputs}
         <Button
@@ -211,17 +202,6 @@ const SignUp = () => {
 
 const Root = styled.div`
   padding: 3.2rem 3.7rem 2.3rem 3.7rem;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 2.8rem;
-`;
-
-const Logo = styled(ILogo)`
-  margin-left: calc(14.3rem - 3.2rem);
 `;
 
 const Form = styled.form`
