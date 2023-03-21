@@ -1,6 +1,6 @@
 import { isValidCheck, isValidEmail, isValidID, isValidPW } from "./validators";
 import { useContext, useCallback, useMemo, useState } from "react";
-import AuthContext from "./context";
+import AuthContext, { SIGN_IN_NAMES } from "./context";
 import { STEPS } from "./index";
 import { Text, fontWeights } from "../styles/Typography";
 import apis from "../../utils/axios";
@@ -57,7 +57,12 @@ const VALID_MSGS = {
 const SignUp = () => {
   const {
     state: { signUpInfo: info, signUpErrors: errors },
-    actions: { setStep, setSignUpInfo: setInfo, setSignUpErrors: setErrors },
+    actions: {
+      setStep,
+      setSignUpInfo: setInfo,
+      setSignUpErrors: setErrors,
+      setSignInInfo,
+    },
   } = useContext(AuthContext);
 
   const [submitErrMsg, setSubmitErrMsg] = useState("");
@@ -161,10 +166,14 @@ const SignUp = () => {
     const signUp = async () => {
       try {
         const response = await apis.sign_up(info);
-        console.log(response.data.status.code);
         switch (response.data.status.code) {
           case 200:
             // TODO 아이디 자동 완성해주기
+            // TODO 이메일을 전송하였습니다. 이메일을 인증해주세요. 알림창 2초간 뜸.
+            setSignInInfo((prev) => ({
+              ...prev,
+              [SIGN_IN_NAMES.ID]: info[NAMES.EMAIL],
+            }));
             setStep(STEPS.SIGN_IN);
             break;
           default:

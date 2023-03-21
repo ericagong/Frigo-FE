@@ -81,5 +81,5 @@ const AuthProvider = ({ children }) => {
 
 const AuthConsumer = AuthContext.Consumer;
 
-export { AuthProvider, AuthConsumer };
+export { SIGN_IN_NAMES, AuthProvider, AuthConsumer };
 export default AuthContext;
