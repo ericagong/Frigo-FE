@@ -1,4 +1,15 @@
 /**
+ * 입력값 존재 여부 검증
+ * @description 입력값이 존재하는지 판별
+ * @param {string} value 사용자 입력값
+ * @returns {boolean}
+ */
+function existValue(value) {
+  if (!value) return false;
+  return true;
+}
+
+/**
  * Email 검증
  * @description `@`를 반드시 포함하고 `@` 전후에 2자 이상의 문자를 포함하는 적절한 이메일 형식인지 판별
  * @param {string} email 이메일
@@ -55,4 +66,4 @@ function isValidCheck(password, check) {
   return password === check;
 }
 
-export { isValidEmail, isValidID, isValidPW, isValidCheck };
+export { existValue, isValidEmail, isValidID, isValidPW, isValidCheck };

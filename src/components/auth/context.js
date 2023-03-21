@@ -1,11 +1,7 @@
 import { createContext, useState } from "react";
 import { NAMES as SIGN_UP_NAMES, DUPLICATE } from "./SignUp";
+import { NAMES as SIGN_IN_NAMES } from "./SignIn";
 import { STEPS } from "./constants";
-
-const SIGN_IN_NAMES = {
-  ID: "id",
-  PW: "password",
-};
 
 const AuthContext = createContext({
   state: {
@@ -24,11 +20,11 @@ const AuthContext = createContext({
       [SIGN_UP_NAMES.CHECK]: false,
     },
     signInInfo: {
-      [SIGN_IN_NAMES.ID]: "",
+      [SIGN_IN_NAMES.EMAIL]: "",
       [SIGN_IN_NAMES.PW]: "",
     },
     signInErrors: {
-      [SIGN_IN_NAMES.ID]: false,
+      [SIGN_IN_NAMES.EMAIL]: false,
       [SIGN_IN_NAMES.PW]: false,
     },
   },
@@ -57,11 +53,11 @@ const AuthProvider = ({ children }) => {
     [SIGN_UP_NAMES.CHECK]: false,
   });
   const [signInInfo, setSignInInfo] = useState({
-    [SIGN_IN_NAMES.ID]: "",
+    [SIGN_IN_NAMES.EMAIL]: "",
     [SIGN_IN_NAMES.PW]: "",
   });
   const [signInErrors, setSignInErrors] = useState({
-    [SIGN_IN_NAMES.ID]: false,
+    [SIGN_IN_NAMES.EMAIL]: false,
     [SIGN_IN_NAMES.PW]: false,
   });
 

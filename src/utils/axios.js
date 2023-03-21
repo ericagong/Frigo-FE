@@ -24,6 +24,12 @@ const apis = {
       password,
     });
   },
+  sign_in: ({ email, password }) => {
+    return instance.post(`/user/signin`, {
+      email,
+      password,
+    });
+  },
 };
 
 export default apis;
