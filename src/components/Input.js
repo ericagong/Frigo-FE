@@ -11,10 +11,11 @@ import radius from "./styles/radius";
 const Input = ({
   name,
   type,
+  icon = null,
   placeholder = null,
   value,
   error,
-  validMsg,
+  validMsg = null,
   errorMsg,
   onChange,
 }) => {
@@ -47,6 +48,7 @@ const Input = ({
   return (
     <Root>
       <InputWrapper>
+        <LeftSection>{icon}</LeftSection>
         <RightSection>
           <InputText
             type={getType}
@@ -91,11 +93,17 @@ const InputWrapper = styled.div`
   border-radius: ${radius.square};
 `;
 
+const LeftSection = styled.div`
+  position: relative;
+  left: 0.01rem;
+  padding-right: 0.5rem;
+`;
+
 const RightSection = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center
-	justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 1.8rem;
   background: inherit;

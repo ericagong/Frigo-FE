@@ -1,3 +1,5 @@
+import { ReactComponent as IUser } from "../../assets/icons/user.svg";
+import { ReactComponent as ILock } from "../../assets/icons/lock_closed.svg";
 import { useContext, useCallback, useMemo } from "react";
 import AuthContext from "./context";
 import Input from "../Input";
@@ -13,6 +15,16 @@ const NAMES = {
 const TYPES = {
   [NAMES.EMAIL]: "text",
   [NAMES.PW]: "password",
+};
+
+const ICONS = {
+  [NAMES.EMAIL]: <IUser />,
+  [NAMES.PW]: <ILock />,
+};
+
+const PLACEHOLDERS = {
+  [NAMES.EMAIL]: "이메일",
+  [NAMES.PW]: "비밀번호",
 };
 
 const ERROR_MSGS = {
@@ -43,6 +55,8 @@ const SignIn = () => {
       <Input
         type={TYPES[name]}
         name={name}
+        icon={ICONS[name]}
+        placeholder={PLACEHOLDERS[name]}
         value={info[name]}
         error={errors[name]}
         errorMsg={ERROR_MSGS[name]}
