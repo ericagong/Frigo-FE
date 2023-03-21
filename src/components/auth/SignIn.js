@@ -5,10 +5,14 @@ import AuthContext from "./context";
 import { existValue } from "./validators";
 import Input from "../Input";
 import apis from "../../utils/axios";
+import colors from "../styles/colors";
 import Header from "./Header";
 import Button from "../Button";
+import { Text } from "../styles/Typography";
+import LinkButton from "./LinkButton";
 import Footer from "./Footer";
 import styled from "styled-components";
+import borders from "../styles/borders";
 
 const NAMES = {
   EMAIL: "email",
@@ -54,8 +58,6 @@ const SignIn = () => {
     [setInfo, setErrors]
   );
 
-  console.log(info, errors);
-
   const getInputs = useMemo(() => {
     return Object.values(NAMES).map((name) => (
       <Input
@@ -71,8 +73,6 @@ const SignIn = () => {
       />
     ));
   }, [info, errors, onChange]);
-
-  console.log(errors);
 
   const onComplete = useCallback(() => {
     const signIn = async () => {
@@ -112,6 +112,10 @@ const SignIn = () => {
     return false;
   };
 
+  const openModal = useCallback(() => {
+    console.log("open modal");
+  }, []);
+
   return (
     <Root>
       <Header />
@@ -119,6 +123,19 @@ const SignIn = () => {
         {getInputs}
         <Button text="로그인" onClick={onComplete} disabled={getDisabled()} />
       </Form>
+      <FindPW>
+        <Text fontSize={`1.4rem`} lineHeight={`2.027rem`} color={colors.gray4}>
+          혹시 비밀번호를 잊으셨나요?
+        </Text>
+        <LinkButton text="비밀번호 찾기" onClick={openModal} />
+      </FindPW>
+      <Divider>
+        <Line />
+        <Text fontSize={`1.4rem`} lineHeight={`2rem`} color={colors.gray4}>
+          또는
+        </Text>
+        <Line />
+      </Divider>
       <Footer />
     </Root>
   );
@@ -132,6 +149,30 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
+`;
+
+const FindPW = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33.2rem;
+  margin-top: 2rem;
+`;
+
+const Divider = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 33.2rem;
+  height: 0.1rem;
+  margin: 2.8rem 0 1.6rem 0;
+`;
+
+const Line = styled.div`
+  width: 13.1rem;
+  border: ${borders.line};
 `;
 
 export { NAMES };

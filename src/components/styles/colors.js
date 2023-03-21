@@ -34,6 +34,7 @@ const colors = {
   gray6: "#656565",
   gray7: "#4B4B4B", // title main color
   gray8: "#282828", // text gray main color
+  gray_stroke: "#D3D3D3",
 
   black_main: "#000000", // text main color
 };
