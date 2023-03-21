@@ -1,8 +1,9 @@
 import { isValidCheck, isValidEmail, isValidID, isValidPW } from "./validators";
-import { useContext, useCallback, useMemo } from "react";
+import { useContext, useCallback, useMemo, useState } from "react";
 import AuthContext from "./context";
 import { STEPS } from "./index";
 import { Text, fontWeights } from "../styles/Typography";
+import apis from "../../utils/axios";
 import { ReactComponent as ILogo } from "../../assets/illustrations/frigo_logo_text.svg";
 import LinkButton from "./LinkButton";
 import Input from "../Input";
@@ -12,10 +13,12 @@ import styled from "styled-components";
 
 const NAMES = {
   EMAIL: "email",
-  ID: "id",
+  ID: "username",
   PW: "password",
   CHECK: "check",
 };
+
+const DUPLICATE = "duplicatae";
 
 const LABELS = {
   [NAMES.EMAIL]: "이메일",
@@ -48,7 +51,6 @@ const VALID_MSGS = {
   [NAMES.CHECK]: "비밀번호 재확인 값이 비밀번호와 일치합니다.",
 };
 
-// TODO 사용가능한 닉네임인지 오류 체크 API 붙이기
 // TODO 이용약관, 개인정보 취급 방침 올바른 url 연결
 // TODO label fontWeight 적용 안되는 이슈 잡기
 // TODO 자동 완성 시 파란 배경 뜨지 않도록 css 처리
@@ -57,6 +59,8 @@ const SignUp = () => {
     state: { signUpInfo: info, signUpErrors: errors },
     actions: { setStep, setSignUpInfo: setInfo, setSignUpErrors: setErrors },
   } = useContext(AuthContext);
+
+  const [submitErrMsg, setSubmitErrMsg] = useState("");
 
   const toSignIn = useCallback(() => {
     setStep(STEPS.SIGN_IN);
@@ -73,6 +77,13 @@ const SignUp = () => {
 
       switch (name) {
         case NAMES.EMAIL:
+          setErrors((prev) => ({
+            ...prev,
+            [name]: !VALIDATORS[name](value),
+            [DUPLICATE]: false,
+          }));
+          setSubmitErrMsg("");
+          break;
         case NAMES.ID:
           setErrors((prev) => ({ ...prev, [name]: !VALIDATORS[name](value) }));
           break;
@@ -112,14 +123,22 @@ const SignUp = () => {
           type={name !== NAMES.CHECK ? "text" : "password"}
           name={name}
           value={info[name]}
-          error={errors[name]}
+          error={
+            name !== NAMES.EMAIL
+              ? errors[name]
+              : errors[name] || errors[DUPLICATE]
+          }
           validMsg={VALID_MSGS[name]}
-          errorMsg={ERROR_MSGS[name]}
+          errorMsg={
+            name !== NAMES.EMAIL
+              ? ERROR_MSGS[name]
+              : submitErrMsg || ERROR_MSGS[name]
+          }
           onChange={onChange}
         />
       </InputWrapper>
     ));
-  }, [info, errors, onChange]);
+  }, [info, errors, submitErrMsg, onChange]);
 
   const toPolicy = useCallback((e) => {
     const { name } = e.target;
@@ -136,9 +155,28 @@ const SignUp = () => {
     return false;
   };
 
+  console.log(errors, submitErrMsg);
+
   const onComplete = useCallback(() => {
-    console.log("completed");
-  }, []);
+    const signUp = async () => {
+      try {
+        const response = await apis.sign_up(info);
+        console.log(response.data.status.code);
+        switch (response.data.status.code) {
+          case 200:
+            // TODO 아이디 자동 완성해주기
+            setStep(STEPS.SIGN_IN);
+            break;
+          default:
+            setErrors((prev) => ({ ...prev, [DUPLICATE]: true }));
+            setSubmitErrMsg(response.data.status.message);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    signUp();
+  }, [info]);
 
   return (
     <Root>
@@ -195,5 +233,5 @@ const Footer = styled.div`
   padding: 1rem 8rem;
 `;
 
-export { NAMES };
+export { NAMES, DUPLICATE };
 export default SignUp;

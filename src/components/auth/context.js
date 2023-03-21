@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { NAMES as SIGN_UP_NAMES } from "./SignUp";
+import { NAMES as SIGN_UP_NAMES, DUPLICATE } from "./SignUp";
 import { STEPS } from "./index";
 
 const SIGN_IN_NAMES = {
@@ -18,6 +18,7 @@ const AuthContext = createContext({
     },
     signUpErrors: {
       [SIGN_UP_NAMES.EMAIL]: false,
+      [DUPLICATE]: false,
       [SIGN_UP_NAMES.ID]: false,
       [SIGN_UP_NAMES.PW]: false,
       [SIGN_UP_NAMES.CHECK]: false,
@@ -50,6 +51,7 @@ const AuthProvider = ({ children }) => {
   });
   const [signUpErrors, setSignUpErrors] = useState({
     [SIGN_UP_NAMES.EMAIL]: false,
+    [DUPLICATE]: false,
     [SIGN_UP_NAMES.ID]: false,
     [SIGN_UP_NAMES.PW]: false,
     [SIGN_UP_NAMES.CHECK]: false,
