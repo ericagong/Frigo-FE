@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { NAMES as SIGN_UP_NAMES, DUPLICATE } from "./SignUp";
-import { STEPS } from "./index";
+import { STEPS } from "./constants";
 
 const SIGN_IN_NAMES = {
   ID: "id",

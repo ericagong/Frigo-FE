@@ -1,11 +1,8 @@
 import { useContext, useMemo } from "react";
 import AuthContext from "./context";
+import { STEPS } from "./constants";
 import SignUp from "./SignUp";
-
-const STEPS = {
-  SIGN_UP: "sign_up",
-  SIGN_IN: "sign_in",
-};
+import SignIn from "./SignIn";
 
 const Auth = () => {
   const {
@@ -14,7 +11,7 @@ const Auth = () => {
 
   const getStep = useMemo(() => {
     if (step === STEPS.SIGN_UP) return <SignUp />;
-    else return <div>STEPS.SIGN_IN</div>;
+    else return <SignIn />;
   }, [step]);
 
   return <>{getStep}</>;

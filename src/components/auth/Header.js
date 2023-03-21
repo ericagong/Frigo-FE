@@ -1,6 +1,6 @@
 import { useContext, useCallback } from "react";
 import AuthContext from "./context";
-import { STEPS } from "./index";
+import { STEPS } from "./constants";
 import { ReactComponent as ILogo } from "../../assets/illustrations/frigo_logo_text.svg";
 import LinkButton from "./LinkButton";
 import styled from "styled-components";
@@ -11,8 +11,8 @@ const LINK_TEXTS = {
 };
 
 const TOGGLED_STEPS = {
-  [STEPS.SIGN_IN]: [STEPS.SIGN_UP],
-  [STEPS.SIGN_UP]: [STEPS.SIGN_IN],
+  [STEPS.SIGN_IN]: STEPS.SIGN_UP,
+  [STEPS.SIGN_UP]: STEPS.SIGN_IN,
 };
 
 const Header = () => {
