@@ -81,6 +81,8 @@ const SignIn = () => {
         const { result, status } = response.data;
         if (result) {
           //	로그인 처리
+          console.log(response.header);
+          // localStorage.setItem('authentication', response.header)
           // 1. 토큰 저장
           // 2. 멤버 아이디, 닉네임, 프로필 이미지도 저장
         } else {

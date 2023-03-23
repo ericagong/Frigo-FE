@@ -18,14 +18,14 @@ instance.defaults.headers.post["Content-Type"] = "application/json";
 
 const apis = {
   sign_up: ({ email, username, password }) => {
-    return instance.post(`/user/signup`, {
+    return instance.post(`user/signup`, {
       email,
       username,
       password,
     });
   },
   sign_in: ({ email, password }) => {
-    return instance.post(`/user/signin`, {
+    return instance.post(`user/signin`, {
       email,
       password,
     });
