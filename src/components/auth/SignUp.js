@@ -181,10 +181,23 @@ const SignUp = () => {
       <Form onSubmit={onSubmit}>
         {getInputs}
         <Button
-          text="회원 가입"
           onClick={onComplete}
           disabled={getDisabled()}
-        />
+          style={{
+            borderColor: colors.orange_main,
+            backgroundColor: colors.orange_main,
+            disabledColor: colors.orange_red_sub,
+          }}
+        >
+          <Text
+            fontSize={`2rem`}
+            fontWeight={fontWeights.bold}
+            lineHeight={`2.896rem`}
+            color={colors.white_main}
+          >
+            회원가입
+          </Text>
+        </Button>
       </Form>
       <Footer />
     </Root>

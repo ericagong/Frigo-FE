@@ -8,7 +8,7 @@ import apis from "../../utils/axios";
 import colors from "../styles/colors";
 import Header from "./Header";
 import Button from "../Button";
-import { Text } from "../styles/Typography";
+import { Text, fontWeights } from "../styles/Typography";
 import LinkButton from "./LinkButton";
 import Footer from "./Footer";
 import styled from "styled-components";
@@ -123,7 +123,24 @@ const SignIn = () => {
       <Header />
       <Form onSubmit={onSubmit}>
         {getInputs}
-        <Button text="로그인" onClick={onComplete} disabled={getDisabled()} />
+        <Button
+          onClick={onComplete}
+          disabled={getDisabled()}
+          style={{
+            borderColor: colors.orange_main,
+            backgroundColor: colors.orange_main,
+            disabledColor: colors.orange_red_sub,
+          }}
+        >
+          <Text
+            fontSize={`2rem`}
+            fontWeight={fontWeights.bold}
+            lineHeight={`2.896rem`}
+            color={colors.white_main}
+          >
+            회원가입
+          </Text>
+        </Button>
       </Form>
       <FindPW>
         <Text fontSize={`1.4rem`} lineHeight={`2.027rem`} color={colors.gray4}>
@@ -138,6 +155,39 @@ const SignIn = () => {
         </Text>
         <Line />
       </Divider>
+      <SocialLogin>
+        <Button
+          onClick={onComplete}
+          style={{
+            backgroundColor: colors.kakao,
+          }}
+        >
+          <Text
+            fontSize={`1.6rem`}
+            fontWeight={fontWeights.medium}
+            lineHeight={`1.875rem`}
+            color={colors.brown_main}
+          >
+            카카오 로그인
+          </Text>
+        </Button>
+        <Button
+          onClick={onComplete}
+          style={{
+            backgroundColor: colors.white_bg,
+            borderColor: colors.gray3,
+          }}
+        >
+          <Text
+            fontSize={`1.6rem`}
+            fontWeight={fontWeights.medium}
+            lineHeight={`1.875rem`}
+            color={colors.black_main}
+          >
+            구글 로그인
+          </Text>
+        </Button>
+      </SocialLogin>
       <Footer />
     </Root>
   );
@@ -175,6 +225,12 @@ const Divider = styled.div`
 const Line = styled.div`
   width: 13.1rem;
   border: ${borders.line};
+`;
+
+const SocialLogin = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 `;
 
 export { NAMES };

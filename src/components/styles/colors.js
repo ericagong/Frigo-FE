@@ -37,6 +37,8 @@ const colors = {
   gray_stroke: "#D3D3D3",
 
   black_main: "#000000", // text main color
+
+  kakao: "#f7de20",
 };
 
 export default colors;
