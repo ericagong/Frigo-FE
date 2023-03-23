@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_BASE_URL = "https://magorosc.shop";
+const SERVER_BASE_URL = "http://magorosc.shop";
 const AUTH_TOKEN = localStorage.getItem("authorization");
 
 // const KAKAO_BASE_URL = `https://kauth.kakao.com`;
@@ -29,6 +29,12 @@ const apis = {
       email,
       password,
     });
+  },
+  sign_in_kakao: ({ code }) => {
+    return instance.get(`user/kakao/callback?code=${code}`);
+  },
+  sign_in_google: ({ code }) => {
+    return instance.get(`user/google/callback?code=${code}`);
   },
 };
 

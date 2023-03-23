@@ -4,12 +4,11 @@ import radius from "./styles/radius";
 const Button = ({
   type = "button",
   icon = null,
-  onClick,
+  onClick = null,
   disabled = false,
   style,
   children,
 }) => {
-  console.log(icon);
   return (
     <Root type={type} {...style} onClick={onClick} disabled={disabled}>
       {icon && (

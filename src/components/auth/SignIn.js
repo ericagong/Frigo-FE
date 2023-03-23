@@ -1,7 +1,5 @@
 import { ReactComponent as IUser } from "../../assets/icons/user.svg";
 import { ReactComponent as ILock } from "../../assets/icons/lock_closed.svg";
-import IKakao from "../../assets/illustrations/kakao_logo.svg";
-import IGoogle from "../../assets/illustrations/google_logo.svg";
 import { useContext, useCallback, useMemo } from "react";
 import AuthContext from "./context";
 import { existValue } from "./validators";
@@ -11,6 +9,7 @@ import colors from "../styles/colors";
 import Header from "./Header";
 import Button from "../Button";
 import { Text, fontWeights } from "../styles/Typography";
+import OAuths from "./OAuths";
 import LinkButton from "./LinkButton";
 import Footer from "./Footer";
 import styled from "styled-components";
@@ -41,6 +40,8 @@ const ERROR_MSGS = {
   [NAMES.PW]: "올바르지 않은 비밀번호입니다.",
 };
 
+// TODO 카카오 로그인
+// TODO 구글 로그인
 const SignIn = () => {
   const {
     state: { signInInfo: info, signInErrors: errors },
@@ -158,39 +159,7 @@ const SignIn = () => {
         <Line />
       </Divider>
       <SocialLogin>
-        <Button
-          icon={IKakao}
-          onClick={onComplete}
-          style={{
-            backgroundColor: colors.kakao,
-          }}
-        >
-          <Text
-            fontSize={`1.6rem`}
-            fontWeight={fontWeights.medium}
-            lineHeight={`1.875rem`}
-            color={colors.brown_main}
-          >
-            카카오 로그인
-          </Text>
-        </Button>
-        <Button
-          icon={IGoogle}
-          onClick={onComplete}
-          style={{
-            backgroundColor: colors.white_bg,
-            borderColor: colors.gray3,
-          }}
-        >
-          <Text
-            fontSize={`1.6rem`}
-            fontWeight={fontWeights.medium}
-            lineHeight={`1.875rem`}
-            color={colors.black_main}
-          >
-            구글 로그인
-          </Text>
-        </Button>
+        <OAuths />
       </SocialLogin>
       <Footer />
     </Root>
