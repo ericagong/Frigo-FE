@@ -9,15 +9,21 @@ const Button = ({
   style,
   children,
 }) => {
+  console.log(icon);
   return (
     <Root type={type} {...style} onClick={onClick} disabled={disabled}>
-      {icon && <img src={icon} alt="icon" />}
+      {icon && (
+        <LeftSection>
+          <img src={icon} alt="icon" />
+        </LeftSection>
+      )}
       {children}
     </Root>
   );
 };
 
 const Root = styled.button`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,6 +43,11 @@ const Root = styled.button`
   &:hover {
     cursor: ${(props) => (!props.disabled ? "pointer" : "default")};
   }
+`;
+
+const LeftSection = styled.div`
+  position: absolute;
+  left: 5%;
 `;
 
 export default Button;

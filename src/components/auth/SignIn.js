@@ -1,5 +1,7 @@
 import { ReactComponent as IUser } from "../../assets/icons/user.svg";
 import { ReactComponent as ILock } from "../../assets/icons/lock_closed.svg";
+import IKakao from "../../assets/illustrations/kakao_logo.svg";
+import IGoogle from "../../assets/illustrations/google_logo.svg";
 import { useContext, useCallback, useMemo } from "react";
 import AuthContext from "./context";
 import { existValue } from "./validators";
@@ -157,6 +159,7 @@ const SignIn = () => {
       </Divider>
       <SocialLogin>
         <Button
+          icon={IKakao}
           onClick={onComplete}
           style={{
             backgroundColor: colors.kakao,
@@ -172,6 +175,7 @@ const SignIn = () => {
           </Text>
         </Button>
         <Button
+          icon={IGoogle}
           onClick={onComplete}
           style={{
             backgroundColor: colors.white_bg,
