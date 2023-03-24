@@ -6,7 +6,7 @@ const AUTH_TOKEN = localStorage.getItem("authorization");
 // const KAKAO_BASE_URL = `https://kauth.kakao.com`;
 
 const instance = axios.create({
-  baseURL: `${SERVER_BASE_URL}/api/`,
+  baseURL: `${SERVER_BASE_URL}`,
   timeout: 3000,
 });
 
@@ -18,23 +18,23 @@ instance.defaults.headers.post["Content-Type"] = "application/json";
 
 const apis = {
   sign_up: ({ email, username, password }) => {
-    return instance.post(`user/signup`, {
+    return instance.post(`/api/user/signup`, {
       email,
       username,
       password,
     });
   },
   sign_in: ({ email, password }) => {
-    return instance.post(`user/signin`, {
+    return instance.post(`/api/user/signin`, {
       email,
       password,
     });
   },
   sign_in_kakao: ({ code }) => {
-    return instance.get(`user/kakao/callback?code=${code}`);
+    return instance.get(`/user/kakao/callback?code=${code}`);
   },
   sign_in_google: ({ code }) => {
-    return instance.get(`user/google/callback?code=${code}`);
+    return instance.get(`/user/google/callback?code=${code}`);
   },
 };
 

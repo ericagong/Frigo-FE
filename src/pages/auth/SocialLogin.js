@@ -25,7 +25,7 @@ const SocialLogin = ({ type }) => {
   const getToken = async () => {
     let response;
     const code = getCode();
-    if (type === [TYPES.KAKAO]) {
+    if (type === "kakao") {
       response = await apis.sign_in_kakao({ code });
     } else {
       response = await apis.sign_in_google({ code });
