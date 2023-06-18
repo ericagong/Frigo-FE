@@ -13,135 +13,6 @@ const fonts = {
   happiness_sans: "Happiness Sans",
 };
 
-// /**
-//  * @description dispaly에 쓰이는 문자 형식
-//  */
-// const DisplayBase = styled.div`
-//   font-family: ${fonts.nato_sans};
-//   font-weight: ${fontWeights.bold};
-//   line-height: 3.8rem;
-// `;
-
-// const Display1 = styled(DisplayBase)`
-//   font-size: 3.2rem;
-// `;
-
-// const Display2 = styled(DisplayBase)`
-//   font-size: 2.8rem;
-// `;
-
-// /**
-//  * @description heading에 쓰이는 문자 형식
-//  */
-// const HeadingBase = styled.div`
-//   font-family: ${fonts.nato_sans};
-//   font-weight: ${fontWeights.bold};
-// `;
-
-// const Heading1 = styled(HeadingBase)`
-//   font-size: 2.4rem;
-//   line-height: 3.4rem;
-// `;
-
-// const Heading2 = styled(HeadingBase)`
-//   font-size: 2.2rem;
-//   line-height: 3.3rem;
-// `;
-
-// const Heading3 = styled(HeadingBase)`
-//   font-size: 2rem;
-//   line-height: 3rem;
-// `;
-
-// const Heading4 = styled(HeadingBase)`
-//   font-size: 1.8rem;
-//   font-weight: ${(props) =>
-//     props.fontWeight ? fontWeights[props.fontWeight] : fontWeights.bold};
-//   line-height: 2.7rem;
-// `;
-
-// const Heading5 = styled(HeadingBase)`
-//   font-size: 1.7rem;
-//   line-height: 2.5rem;
-// `;
-
-// const Heading6 = styled(HeadingBase)`
-//   font-size: 1.6rem;
-//   font-weight: ${(props) =>
-//     props.fontWeight ? fontWeights[props.fontWeight] : fontWeights.bold};
-//   line-height: 2.4rem;
-// `;
-
-// /**
-//  * @description paragraph 내에 쓰이는 문자 형식
-//  */
-// const ParagraphBase = styled.div`
-//   font-family: ${fonts.nato_sans};
-//   font-weight: ${(props) =>
-//     props.fontWeight ? fontWeights[props.fontWeight] : fontWeights.bold};
-// `;
-
-// const Paragraph1 = styled(ParagraphBase)`
-//   font-size: 1.6rem;
-//   line-height: 2.6rem;
-// `;
-
-// const Paragraph2 = styled(ParagraphBase)`
-//   font-size: 1.5rem;
-//   line-height: 2.4rem;
-// `;
-
-// const Paragraph3 = styled(ParagraphBase)`
-//   font-size: 1.4rem;
-//   line-height: 2.2rem;
-// `;
-
-// const Paragraph4 = styled(ParagraphBase)`
-//   font-size: 1.4rem;
-//   line-height: 2.1rem;
-// `;
-
-// const Caption = styled.div`
-//   font-family: ${fonts.nato_sans};
-//   font-weight: ${fontWeights.regular};
-//   font-size: 1.2rem;
-//   line-height: 1.8rem;
-// `;
-
-// const Small = styled.div`
-//   font-family: ${fonts.nato_sans};
-//   font-weight: ${(props) =>
-//     props.fontWeight ? fontWeights[props.fontWeight] : fontWeights.bold};
-//   font-size: 1.1rem;
-//   line-height: 1.6rem;
-// `;
-
-// const ButtonBase = styled.div`
-//   font-family: ${fonts.nato_sans};
-//   font-weight: ${(props) =>
-//     props.fontWeight ? fontWeights[props.fontWeight] : fontWeights.bold};
-// `;
-
-// const Button1 = styled(ButtonBase)`
-//   font-size: 1.8rem;
-//   line-height: 2.6rem;
-// `;
-
-// const Button2 = styled(ButtonBase)`
-//   font-size: 1.6rem;
-//   line-height: 2.4rem;
-// `;
-
-// const Button3 = styled(ButtonBase)`
-//   font-size: 1.4rem;
-//   line-height: 2rem;
-// `;
-
-// const Button4 = styled(ButtonBase)`
-//   font-size: 1.3rem;
-//   line-height: 1.9rem;
-// `;
-
 const TitleBase = styled.div`
   font-family: ${fonts.happiness_sans};
   font-weight: ${fontWeights.extra_bold};
@@ -199,11 +70,11 @@ const ST_16 = styled(TitleBase)`
 
 /**
  * 내부 텍스트
- * @description props: fontWeight=medium, lineHeight=1.448rem, color=colrs.gray4, style
+ * @description props: fontSize=1rem, fontWeight=medium, lineHeight=1.448rem, color=colrs.gray4, style
  */
 const Text = styled.div`
   font-family: ${fonts.nato_sans};
-  font-size: 1rem;
+  font-size: ${(props) => (!props.fontSize ? `1rem` : props.fontSize)};
 	font-weight: ${(props) =>
     !props.fontWeight ? fontWeights.medium : props.fontWeight}
   line-height: ${(props) =>

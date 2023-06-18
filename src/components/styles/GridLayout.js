@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Layout = ({ children, ...props }) => {
+const GridLayout = ({ children, ...props }) => {
   return <Root {...props}>{children}</Root>;
 };
 
@@ -24,4 +24,10 @@ const Root = styled.div`
   }
 `;
 
-export default Layout;
+export const StGrid = styled.div`
+  background: #ffffff;
+  box-shadow: 0px 3px 13px 1px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+`;
+
+export default GridLayout;

@@ -4,6 +4,7 @@ const colors = {
 
   orange_main: "#FC9700",
   orange_bg: "#FF8E42",
+  orange_storke: "#F07401",
 
   yellow_main: "#FFDD7C",
   yellow_bg: "#FFB356",
@@ -33,8 +34,11 @@ const colors = {
   gray6: "#656565",
   gray7: "#4B4B4B", // title main color
   gray8: "#282828", // text gray main color
+  gray_stroke: "#D3D3D3",
 
   black_main: "#000000", // text main color
+
+  kakao: "#f7de20",
 };
 
 export default colors;
